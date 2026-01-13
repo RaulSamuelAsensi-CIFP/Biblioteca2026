@@ -23,6 +23,8 @@ public class Biblioteca {
     private static ArrayList <PrestamosHist> prestamosHist=new ArrayList();
     private static Scanner sc=new Scanner(System.in);
 
+    
+    
     public void main(String[] args) {
         //cargaDatos();
         //menu();
@@ -584,5 +586,23 @@ public class Biblioteca {
     }
     
     
+    public static boolean esInt (String s) {
+        int n;
+        try{
+            n=Integer .parseInt(s);
+            return true;
+        }catch (NumberFormatException ex){
+            return false;
+        }
+    }
     
+    public static boolean esDouble (String s) {
+        double n;
+        try {
+            n = Double.parseDouble(s);
+            return true;
+        }catch (NumberFormatException ex){
+            return false;
+        }
+    }
 }
