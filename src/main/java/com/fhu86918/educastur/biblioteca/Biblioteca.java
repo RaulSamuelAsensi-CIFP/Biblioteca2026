@@ -605,4 +605,51 @@ public class Biblioteca {
             return false;
         }
     }
+    
+    /* // 
+    public static void main(String[] args) {
+        String exT;
+        do {            
+            System.out.println("EXISTENCIAS: ");
+            exT=sc.next(); //Se lee la entrada de EXISTENCIAS com un String
+        } while (!esInt(exT)); //Se sigue pidiendo la entrada si no es un int
+        System.out.println("Finalmente el entero introducido es: " + Integer.parseInt(exT));
+    }*/
+    
+    
+    
+    /* //INTRODUCIR EL PVP DE UN ARTÍCULO EN UNA VARIABLE DE TIPO DOUBLE
+        public static void main(String[] args) {
+        String pvpT;
+        do {    
+            System.out.println("PVP: ");
+            exT=sc.next(); //Se lee la entrada de EXISTENCIAS com un String
+        } while (!esDouble(pvpT)); //Se sigue pidiendo la entrada si no es un int
+        System.out.println("Finalmente el double introducido es: " + Double.parseDouble(pvpT));
+    }*/
+    private static char calcularLetraDNI(int numero){
+        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
+        return letras.charAt( numero  23)
+    }
+    public static boolean validarDNI (String dni) {
+        //Verificar que el DNI tiene un formato válido
+        if (dni.isBlank() || !dni.matches("\\d{8} [A-HJ-NP-TV-Z]")) {
+            return false;
+        }
+        
+        //Extraer el número y la letra del DNI
+        String numeroStr = dni.substring(0, 8);
+        char letra = dni.charAt(8);
+        
+        //Calcular la letra correspondiente al número del DNI
+        char letraCalculada = calcularLetraDNI(Integer.parseInt(numeroStr));
+        
+        //Comparar la letra calculada con la letra proporrcionada y devolver
+        //el resultado de la comparación TRUE/FALSE
+        
+        return letra == letraCalculada;
+    }
+
+    
+    
 }
