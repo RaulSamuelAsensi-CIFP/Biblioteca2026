@@ -8,6 +8,7 @@ package com.fhu86918.educastur.biblioteca;
  *
  * @author 1dawd
  */
+
 public class LibroNoExiste extends Exception {
         public LibroNoExiste(String cadena){
                     super(cadena); //Llama al contructor de Exception y le pasa el contenido

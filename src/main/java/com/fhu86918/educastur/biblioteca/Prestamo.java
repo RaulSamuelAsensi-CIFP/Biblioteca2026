@@ -5,12 +5,14 @@
 package com.fhu86918.educastur.biblioteca;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
  * @author Clase
  */
 public class Prestamo {
+      private static ArrayList <PrestamosHist> prestamosHist=new ArrayList();
 
     private Libro libro;
     private Usuario usuario;

@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-*/
+ */
 
 package com.fhu86918.educastur.biblioteca;
 
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-        
+
         
 /**
  *
@@ -77,6 +77,7 @@ public class Biblioteca {
         prestamosHist.add(new Prestamo(libros.get(1), usuarios.get(1), hoy.minusDays(20), hoy.minusDays(5)));
         prestamosHist.add(new Prestamo(libros.get(7), usuarios.get(2), hoy.minusDays(10), hoy));
         prestamosHist.add(new Prestamo(libros.get(6), usuarios.get(3), hoy.minusDays(10), hoy));
+        
     }
     /*public static void menu() {
         int Opcion;
@@ -629,7 +630,7 @@ public class Biblioteca {
     }*/
     private static char calcularLetraDNI(int numero){
         String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-        return letras.charAt( numero  23)
+        return letras.charAt( numero 23)
     }
     public static boolean validarDNI (String dni) {
         //Verificar que el DNI tiene un formato válido

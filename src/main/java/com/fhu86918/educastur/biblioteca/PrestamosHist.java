@@ -13,7 +13,6 @@ import java.time.LocalDate;
  * @author Clase
  */
     
-
     public class PrestamosHist {
       private static ArrayList <Prestamo> prestamos=new ArrayList();
 
