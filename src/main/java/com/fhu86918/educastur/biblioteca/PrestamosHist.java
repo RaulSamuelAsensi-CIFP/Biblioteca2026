@@ -28,6 +28,8 @@ import java.time.LocalDate;
         this.usuario = usuario;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaDevolucion = fechaDevolucion;
+        this.UsuarioPrestamo = UsuarioPrestamo;
+        this.libroPrestamo = libroPrestamo;    
     }
         public Libro getLibro() {
             return libro;
@@ -58,7 +60,23 @@ import java.time.LocalDate;
             this.fechaDevolucion = fechaDevolucion;
         }
 
+        public Usuario getUsuarioPrestamo() {
+            return UsuarioPrestamo;
+        }
 
+        public void setUsuarioPrestamo(Usuario UsuarioPrestamo) {
+            this.UsuarioPrestamo = UsuarioPrestamo;
+        }
+
+        public Libro getLibroPrestamo() {
+            return libroPrestamo;
+        }
+
+        public void setLibroPrestamo(Libro libroPrestamo) {
+            this.libroPrestamo = libroPrestamo;
+        }
+
+        
     
 
     
