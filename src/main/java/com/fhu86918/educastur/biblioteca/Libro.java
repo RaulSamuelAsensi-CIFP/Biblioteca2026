@@ -70,6 +70,6 @@ public class Libro {
     @Override
     public String toString() {
         return Isbn + "-" + titulo + "-" + autor + "-" + genero + "-" + ejemplares;
-    }        
+    }  
 
 }  
