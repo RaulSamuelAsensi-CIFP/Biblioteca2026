@@ -79,6 +79,7 @@ public class Biblioteca {
         prestamosHist.add(new Prestamo(libros.get(6), usuarios.get(3), hoy.minusDays(10), hoy));
         
     }
+    
     /*public static void menu() {
         int Opcion;
         do {
@@ -587,70 +588,46 @@ public class Biblioteca {
     }
     
     
-    public static boolean esInt (String s) {
-        int n;
-        try{
-            n=Integer .parseInt(s);
-            return true;
-        }catch (NumberFormatException ex){
-            return false;
-        }
-    }
-    
-    public static boolean esDouble (String s) {
-        double n;
-        try {
-            n = Double.parseDouble(s);
-            return true;
-        }catch (NumberFormatException ex){
-            return false;
-        }
-    }
-    
-    /* // 
-    public static void main(String[] args) {
-        String exT;
-        do {            
-            System.out.println("EXISTENCIAS: ");
-            exT=sc.next(); //Se lee la entrada de EXISTENCIAS com un String
-        } while (!esInt(exT)); //Se sigue pidiendo la entrada si no es un int
-        System.out.println("Finalmente el entero introducido es: " + Integer.parseInt(exT));
-    }*/
-    
-    
-    
-    /* //INTRODUCIR EL PVP DE UN ARTÍCULO EN UNA VARIABLE DE TIPO DOUBLE
-        public static void main(String[] args) {
-        String pvpT;
-        do {    
-            System.out.println("PVP: ");
-            exT=sc.next(); //Se lee la entrada de EXISTENCIAS com un String
-        } while (!esDouble(pvpT)); //Se sigue pidiendo la entrada si no es un int
-        System.out.println("Finalmente el double introducido es: " + Double.parseDouble(pvpT));
-    }*/
-    private static char calcularLetraDNI(int numero){
-        String letras = "TRWAGMYFPDXBNJZSQVHLCKE";
-        return letras.charAt( numero 23)
-    }
-    public static boolean validarDNI (String dni) {
-        //Verificar que el DNI tiene un formato válido
-        if (dni.isBlank() || !dni.matches("\\d{8} [A-HJ-NP-TV-Z]")) {
-            return false;
-        }
+public static void listadosConStreams(){
+        //Listados generales de libros y usuarios con STREAMS
+        System.out.println("Libros listados desde un STREAM:");
+        libros.stream().forEach(l->System.out.println(l));
+        System.out.println("\nUsuarios listados desde un STREAM:");
+        usuarios.stream().forEach(u->System.out.println(u));
         
-        //Extraer el número y la letra del DNI
-        String numeroStr = dni.substring(0, 8);
-        char letra = dni.charAt(8);
+        //Listados selectivos (filter) con STREAMS
+        System.out.println("\nLibros de la seccion aventuras:");
+        libros.stream().filter(l-> l.getGenero().equalsIgnoreCase("aventuras"))
+                       .forEach(l->System.out.println(l));
         
-        //Calcular la letra correspondiente al número del DNI
-        char letraCalculada = calcularLetraDNI(Integer.parseInt(numeroStr));
+        System.out.println("\nLibros de la seccion novela negra o del autor JRR tolkien:");
+        libros.stream().filter(l-> l.getGenero().equalsIgnoreCase("novela negra")
+                       || l.getAutor().equalsIgnoreCase("jrr tolkien"))
+                       .forEach(l->System.out.println(l));
         
-        //Comparar la letra calculada con la letra proporrcionada y devolver
-        //el resultado de la comparación TRUE/FALSE
+        System.out.println("\nPrestamos fuera de plazo:");
+        prestamos.stream().filter(p-> p.getFechaDevolucion().isBefore(LocalDate.now()))
+                       .forEach(p->System.out.println(p));
         
-        return letra == letraCalculada;
-    }
-
-    
-    
+        System.out.println("\nPrestamos activos y no activos del usuario(teclear NOMBRE):");
+        String nombre=sc.next();
+        prestamos.stream().filter(p->p.getUsuarioPrestamo().getNombre().equalsIgnoreCase(nombre))
+                .forEach(p->System.out.println(p));
+        prestamosHist.stream().filter(p->p.getUsuarioPrestamo().getNombre().equalsIgnoreCase(nombre))
+                .forEach(p->System.out.println(p));
+        
+        System.out.println("\nPrestamos Fuera de plazo de un usuario(teclear NOMBRE):");
+        String nombre2=sc.next();
+        prestamos.stream().filter(p->p.getUsuarioPrestamo().getNombre().equalsIgnoreCase(nombre2)
+                        && p.getFechaDevolucion().isBefore(LocalDate.now()))
+                        .forEach(p->System.out.println(p));
+        
+        System.out.println("\nPrestamos activos de libros del genero aventuras:");
+        prestamos.stream().filter(p->p.getLibroPrestamo().getGenero().equalsIgnoreCase("aventuras"))
+                .forEach(p->System.out.println(p));
+        
+    }  
+        
+        
 }
+    
