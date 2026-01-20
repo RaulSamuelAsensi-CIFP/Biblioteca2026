@@ -35,6 +35,7 @@ public class Biblioteca {
         
         cargaDatosPrueba12();
         ordenarConStreams();
+        //System.out.println(numeroPrestamosLibro("1-11")); 
     }
 
     public void cargaDatosPrueba12() {
@@ -545,6 +546,7 @@ public class Biblioteca {
         }
     }
 
+    
     public static void dos() {
         System.out.print("DNI usuario para consultar prestamos:");
         String dni = sc.next();
@@ -570,9 +572,10 @@ public class Biblioteca {
         }
     }*/
     
-    
-
-    /*public static int stockLibro(String isbn) throws LibroNoDisponible, LibroNoExiste{ 
+    /**
+     * Sirve para mirar los libros que quedan actualmente en la biblioteca
+     */
+    public static int stockLibro(String isbn) throws LibroNoDisponible, LibroNoExiste{ 
         int pos=buscaIsbn(isbn);
         if (pos==-1){
             throw new LibroNoExiste("No existe en esta biblioteca la referencia: ");
@@ -629,13 +632,42 @@ public class Biblioteca {
         prestamos.stream().filter(p -> p.getLibroPrestamo().getGenero().equalsIgnoreCase("aventuras"))
                 .forEach(p -> System.out.println(p));
 
-    }*/
-
+    }
+    
+    
+    /**
+     * Sirve para ordenar libros mediante el metodo sorted
+     */
     public static void ordenarConStreams() {
         System.out.println("Listado de libros ordenados alfabeticamente por título: ");
-        libros.stream().sorted(Comparator.comparing(Libro::getTitulo)).forEach(l-> System.out.println(l));
+        libros.stream().sorted(Comparator.comparing(Libro::getTitulo).reversed()).forEach(l-> System.out.println(l));
+        
+        System.out.println("Listado de libros ordenados alfabeticamente por título: ");
+        libros.stream().sorted(Comparator.comparing(Libro::getTitulo).reversed()).forEach(l-> System.out.println(l));
+
+        System.out.println("Listado de libros ordenados por numero de prestamos: ");
+        libros.stream().sorted(Comparator.comparing(l-> numeroPrestamosLibro(l.getIsbn())))
+                .forEach(l-> System.out.println(l + " Unidades prestadas: " + numeroPrestamosLibro(l.getIsbn())));
+
     }
-        
-        
+    
+    /**
+     * Sirve para contabilizar el numero de prestamos de un libro
+     */
+    public static int numeroPrestamosLibro (String isbn) {
+        int cont=0;
+        for (Prestamo p : prestamos) {
+            if (p.getLibroPrestamo().getIsbn().equalsIgnoreCase(isbn)) {
+                cont++;
+            }
+        }
+        return cont;
+    }   
+
+
+
 }
+        
+        
+
     
