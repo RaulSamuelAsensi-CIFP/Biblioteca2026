@@ -572,7 +572,7 @@ public class Biblioteca {
     
     
 
-    /*public static int stockLibro(String isbn) throws LibroNoDisponible, LibroNoExiste{ 
+    public static int stockLibro(String isbn) throws LibroNoDisponible, LibroNoExiste{ 
         int pos=buscaIsbn(isbn);
         if (pos==-1){
             throw new LibroNoExiste("No existe en esta biblioteca la referencia: ");
@@ -637,6 +637,6 @@ public class Biblioteca {
     }
         
     
-        
+
 }
     
