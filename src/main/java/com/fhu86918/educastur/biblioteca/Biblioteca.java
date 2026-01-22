@@ -629,14 +629,14 @@ public class Biblioteca {
         prestamos.stream().filter(p -> p.getLibroPrestamo().getGenero().equalsIgnoreCase("aventuras"))
                 .forEach(p -> System.out.println(p));
 
-    }*/
+    }
 
     public static void ordenarConStreams() {
         System.out.println("Listado de libros ordenados alfabeticamente por título: ");
         libros.stream().sorted(Comparator.comparing(Libro::getTitulo)).forEach(l-> System.out.println(l));
     }
         
-    
+
 
 }
     
