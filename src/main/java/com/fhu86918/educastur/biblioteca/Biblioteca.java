@@ -25,7 +25,7 @@ public class Biblioteca {
 
     
         //cargaDatos();
-        //menu();
+        menu();
         //uno();
         //dos();
         //tres();
@@ -633,10 +633,9 @@ public class Biblioteca {
 
     public static void ordenarConStreams() {
         System.out.println("Listado de libros ordenados alfabeticamente por título: ");
-        libros.stream().sorted(Comparator.comparing(Libro::getTitulo)).forEach(l-> System.out.println(l));
     }
-        
-
-
-}
     
+    
+    
+}
+
